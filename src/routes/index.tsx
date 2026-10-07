@@ -7,6 +7,7 @@ import logo from '@/assets/logo.asset.json';
 import innocentia from '@/assets/innocentia.asset.json';
 import phakamani from '@/assets/phakamani.asset.json';
 import technology from '@/assets/technology.jpg';
+import { RequestForm } from '@/components/request-form';
 
 export const Route = createFileRoute('/')({
   head: () => ({ meta: [
@@ -27,10 +28,7 @@ function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [filter, setFilter] = useState('All services');
   const [expanded, setExpanded] = useState<string | null>(null);
-  const [name, setName] = useState('');
-  const [address, setAddress] = useState('');
   const [interest, setInterest] = useState('Custom Software Development');
-  const [message, setMessage] = useState('');
   return <div>
     <header className="site-header">
       <div className="container header-inner">
@@ -83,7 +81,7 @@ function Index() {
       <section id="team" className="team-band"><div className="container section"><div className="section-heading"><div><div className="eyebrow">04 / THE PEOPLE BEHIND ITHEKU</div><h2>Driven by purpose.<br />Led by people.</h2></div><p>Meet the founders and directors building a technology company with your enterprise at its heart.</p></div><div className="team-grid">{[[innocentia.url, 'Vhulenda Innocentia Nefolovhodwe'], [phakamani.url, 'Phakamani Mbatha']].map(([image, person]) => <article className="team-member" key={person}><img src={image} alt={person} loading="lazy" width={600} height={700} /><div className="team-caption"><div><h3>{person}</h3><p>Co-Founder & Director</p></div><span><MoveUpRight size={22} /></span></div></article>)}</div></div></section>
 
       <section id="contact" className="section container contact-layout"><div><div className="eyebrow">05 / LET’S START A CONVERSATION</div><h2>Your next chapter.<br /><span className="text-muted-foreground">Built together.</span></h2><p className="contact-intro">Have an idea, a challenge, or a project in mind?<br />Let’s talk about what’s possible.</p><div className="contact-details"><a href={`mailto:${email}`}><Mail size={20} /><span><small>EMAIL US</small>{email}</span></a><a href="tel:+27699874907"><Phone size={20} /><span><small>CALL US</small>069 987 4907</span></a><a href="https://www.google.com/maps/search/?api=1&query=300+Apline+Road+Springfield+Durban+4091" target="_blank" rel="noreferrer"><MapPin size={20} /><span><small>FIND US</small>300 Apline Road, Springfield<br />Durban, 4091, South Africa</span></a></div></div>
-        <form className="contact-form" onSubmit={e => { e.preventDefault(); const body = `Name: ${name}\nEmail: ${address}\nService: ${interest}\n\n${message}`; window.location.href = `mailto:${email}?subject=${encodeURIComponent(`Project enquiry: ${interest}`)}&body=${encodeURIComponent(body)}`; }}><div className="form-row"><label>Your name<input required name="name" value={name} onChange={e => setName(e.target.value)} placeholder="Full name" autoComplete="name" /></label><label>Email address<input required type="email" name="email" value={address} onChange={e => setAddress(e.target.value)} placeholder="you@company.com" autoComplete="email" /></label></div><label>What can we help you with?<select value={interest} onChange={e => setInterest(e.target.value)}>{services.map(s => <option key={s.title}>{s.title}</option>)}</select></label><label>Tell us about your project<textarea required name="message" rows={4} value={message} onChange={e => setMessage(e.target.value)} placeholder="Your idea, your goals, or the challenge you want to solve…" /></label><Button type="submit" size="lg">Start a conversation <ArrowUpRight /></Button><p className="form-note">Opens your email app with your enquiry ready to send.</p></form>
+        <RequestForm selectedService={interest} />
       </section>
     </main>
     <footer><div className="container footer-main"><a className="footer-brand" href="#home">iTheku<span>Tech-Enterprise</span></a><p>Your Enterprise, <span>Our priority.</span></p><a href="#home" className="back-top">Back to top <ArrowUpRight size={16} /></a></div><div className="container footer-bottom"><span>© {new Date().getFullYear()} iTheku Tech-Enterprise. All rights reserved.</span><span><span className="gold-dot" /> Proudly 100% black-owned. Durban, South Africa.</span></div></footer>
