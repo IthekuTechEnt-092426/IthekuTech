@@ -10,7 +10,7 @@
 <!-- LOVABLE:END -->
 
 ## Application rules
-- Keep the company website in the index route with in-page section navigation, because the supplied brief describes one company profile.
+- Keep concise company previews on the index route and full content on dedicated company pages, because visitors need both a landing overview and shareable detail pages.
 - Store company service content in a browser-safe data module, because all service listings and details must share the same source.
 - Use CDN asset pointers for supplied logos and founder photographs, because original uploaded media should not inflate the source repository.
 - Website requests use a shared Zod schema, a public TanStack server function and a narrowly granted database submission function, because visitors need validated submissions without accounts or access to other enquiries.
