@@ -8,3 +8,9 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+## Application rules
+- Keep the company website in the index route with in-page section navigation, because the supplied brief describes one company profile.
+- Store company service content in a browser-safe data module, because all service listings and details must share the same source.
+- Use CDN asset pointers for supplied logos and founder photographs, because original uploaded media should not inflate the source repository.
+- Contact enquiries use a prefilled email link without claiming delivery, because no email sending service is connected.
