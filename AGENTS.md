@@ -13,4 +13,5 @@
 - Keep the company website in the index route with in-page section navigation, because the supplied brief describes one company profile.
 - Store company service content in a browser-safe data module, because all service listings and details must share the same source.
 - Use CDN asset pointers for supplied logos and founder photographs, because original uploaded media should not inflate the source repository.
-- Contact enquiries use a prefilled email link without claiming delivery, because no email sending service is connected.
+- Website requests use a shared Zod schema, a public TanStack server function and a narrowly granted database submission function, because visitors need validated submissions without accounts or access to other enquiries.
+- Request rows are private to service-role management; submissions are rate-limited by email and idempotent by request ID, because anonymous visitors must not read customer details or create accidental duplicate requests.
