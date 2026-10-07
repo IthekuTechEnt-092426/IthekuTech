@@ -16,3 +16,7 @@ export const services = [
   { title: 'Digital Transformation & Consulting', category: 'Design & Strategy', icon: Compass, description: 'A clear technology roadmap, grounded in your business goals.', items: ['Software solution consulting', 'Digital transformation strategy', 'Technology architecture', 'AI adoption consulting', 'Automation strategy', 'Business process digitisation', 'Software feasibility assessments', 'Technology roadmaps', 'Legacy system modernisation', 'Technical advisory services'] },
 ];
 export const email = 'ithekutechenterprise@gmail.com';
+
+export function serviceSlug(title: string) {
+  return title.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+}
