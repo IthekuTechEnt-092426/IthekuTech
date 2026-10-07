@@ -1,13 +1,13 @@
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute, Link } from '@tanstack/react-router';
 import { useState } from 'react';
-import { ArrowUpRight, ArrowRight, Check, MapPin, Mail, Phone, Menu, X, ChevronDown, MoveUpRight } from 'lucide-react';
+import { ArrowUpRight, ArrowRight, Check, MapPin, Mail, Phone, X, ChevronDown, MoveUpRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { services, email } from '@/lib/company';
-import logo from '@/assets/logo.asset.json';
 import innocentia from '@/assets/innocentia.asset.json';
 import phakamani from '@/assets/phakamani.asset.json';
 import technology from '@/assets/technology.jpg';
 import { RequestForm } from '@/components/request-form';
+import { SiteFooter, SiteHeader } from '@/components/site-chrome';
 
 export const Route = createFileRoute('/')({
   head: () => ({ meta: [
@@ -22,23 +22,12 @@ export const Route = createFileRoute('/')({
 });
 
 const filters = ['All services', 'Development', 'AI & Automation', 'Infrastructure', 'Design & Strategy', 'Support & Quality'];
-const nav = [['Services', '#services'], ['About us', '#about'], ['Our approach', '#approach'], ['Our team', '#team']];
-
 function Index() {
-  const [menuOpen, setMenuOpen] = useState(false);
   const [filter, setFilter] = useState('All services');
   const [expanded, setExpanded] = useState<string | null>(null);
   const [interest, setInterest] = useState('Custom Software Development');
   return <div>
-    <header className="site-header">
-      <div className="container header-inner">
-        <a href="#home" className="logo-link" aria-label="iTheku Tech-Enterprise home"><img src={logo.url} alt="iTheku Tech-Enterprise — Your Enterprise, Our priority." width={970} height={845} /></a>
-        <nav aria-label="Main navigation" className="desktop-nav">{nav.map(([label, href]) => <a href={href} key={label}>{label}</a>)}</nav>
-        <Button asChild className="header-cta"><a href="#contact">Let’s talk <ArrowUpRight /></a></Button>
-        <Button variant="ghost" size="icon" className="mobile-menu-button" aria-label={menuOpen ? 'Close navigation' : 'Open navigation'} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</Button>
-      </div>
-      {menuOpen && <nav className="mobile-nav" aria-label="Mobile navigation">{[...nav, ['Let’s talk', '#contact']].map(([label, href]) => <a key={label} href={href} onClick={() => setMenuOpen(false)}>{label}<ArrowUpRight size={16} /></a>)}</nav>}
-    </header>
+    <SiteHeader />
 
     <main>
       <section id="home" className="hero">
@@ -49,7 +38,7 @@ function Index() {
           <h1>iTheku<br /><span>Tech-Enterprise</span></h1>
           <p className="hero-motto">Your Enterprise, <span>Our priority.</span></p>
           <p className="hero-description">From custom software to intelligent AI solutions,<br className="desktop-break" /> we build the technology that moves your business forward.</p>
-          <div className="hero-actions"><Button asChild size="lg"><a href="#contact">Let’s build your solution <ArrowUpRight /></a></Button><a className="hero-services" href="#services">Explore our services <ArrowRight size={17} /></a></div>
+          <div className="hero-actions"><Button asChild size="lg"><Link to="/contact">Let’s build your solution <ArrowUpRight /></Link></Button><a className="hero-services" href="#services">Explore our services <ArrowRight size={17} /></a></div>
           <div className="hero-location"><MapPin size={14} /> Rooted in Durban. Built for your business.</div>
         </div>
         <a className="hero-scroll" href="#services" aria-label="Scroll to services"><ChevronDown size={20} /></a>
@@ -64,9 +53,9 @@ function Index() {
           <div className="service-top"><s.icon size={27} strokeWidth={1.4} /><span>{String(services.indexOf(s) + 1).padStart(2, '0')}</span></div>
           <h3>{s.title}</h3><p>{s.description}</p>
           <Button variant="ghost" className="service-link" aria-expanded={expanded === s.title} onClick={() => setExpanded(expanded === s.title ? null : s.title)}>{expanded === s.title ? 'Close details' : 'Explore service'}{expanded === s.title ? <X /> : <ArrowUpRight />}</Button>
-          {expanded === s.title && <div className="service-details"><ul>{s.items.map(item => <li key={item}><Check size={13} />{item}</li>)}</ul><a href="#contact" onClick={() => setInterest(s.title)}>Discuss this service <ArrowRight size={14} /></a></div>}
+          {expanded === s.title && <div className="service-details"><ul>{s.items.map(item => <li key={item}><Check size={13} />{item}</li>)}</ul><a href="#contact" onClick={() => setInterest(s.title)}>Discuss this service <ArrowRight size={14} /></a><Link to="/services">View full service page <ArrowUpRight size={14} /></Link></div>}
         </article>)}</div>
-        <div className="service-bottom"><p>Not sure where to start? Let’s find the right solution together.</p><a href="#contact">Talk to our team <ArrowUpRight size={16} /></a></div>
+        <div className="service-bottom"><p>Not sure where to start? Let’s find the right solution together.</p><Link to="/services">View all service details <ArrowUpRight size={16} /></Link></div>
       </section>
 
       <section id="about" className="about-band"><div className="container about-layout"><div><div className="eyebrow">02 / THE ITHEKU DIFFERENCE</div><h2>Technology is our craft.<br /><span>Your business is our focus.</span></h2></div><div className="about-copy"><p>We are iTheku Tech-Enterprise — a 100% black-owned technology company based in Durban, South Africa.</p><p>We design, develop, and maintain digital solutions around your specific business requirements. Our work connects software, intelligence, and people to create practical value for your enterprise.</p><div className="about-promise"><span className="small-line" /> Your Enterprise, Our priority.</div></div></div></section>
@@ -84,6 +73,6 @@ function Index() {
         <RequestForm selectedService={interest} />
       </section>
     </main>
-    <footer><div className="container footer-main"><a className="footer-brand" href="#home">iTheku<span>Tech-Enterprise</span></a><p>Your Enterprise, <span>Our priority.</span></p><a href="#home" className="back-top">Back to top <ArrowUpRight size={16} /></a></div><div className="container footer-bottom"><span>© {new Date().getFullYear()} iTheku Tech-Enterprise. All rights reserved.</span><span><span className="gold-dot" /> Proudly 100% black-owned. Durban, South Africa.</span></div></footer>
+    <SiteFooter />
   </div>;
 }
