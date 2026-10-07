@@ -13,7 +13,7 @@ export function RequestForm({ selectedService }: { selectedService: string }) {
   const [pending, setPending] = useState(false);
   const [reference, setReference] = useState('');
   const [error, setError] = useState('');
-  const [fields, setFields] = useState<Record<string, string>>({});
+  const [fields, setFields] = useState<Partial<Record<'name' | 'email' | 'message', string>> & Record<string, string | undefined>>({});
   const requestId = useRef<string | null>(null);
   const locked = useRef(false);
   useEffect(() => { setService(selectedService); }, [selectedService]);
