@@ -14,13 +14,62 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      website_requests: {
+        Row: {
+          company: string
+          created_at: string
+          email: string
+          id: string
+          message: string
+          name: string
+          reference: string
+          request_type: string
+          service: string
+          status: string
+        }
+        Insert: {
+          company?: string
+          created_at?: string
+          email: string
+          id: string
+          message: string
+          name: string
+          reference: string
+          request_type: string
+          service: string
+          status?: string
+        }
+        Update: {
+          company?: string
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string
+          name?: string
+          reference?: string
+          request_type?: string
+          service?: string
+          status?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      submit_website_request: {
+        Args: {
+          p_company: string
+          p_email: string
+          p_id: string
+          p_message: string
+          p_name: string
+          p_service: string
+          p_type: string
+        }
+        Returns: string
+      }
     }
     Enums: {
       [_ in never]: never
