@@ -7,3 +7,5 @@
 - [ ] Add dedicated pages for Services, About, Approach, Team and Contact.
 - [ ] Add a complete services dropdown and expanded footer links.
 - [ ] Verify all new navigation and page layouts on desktop and mobile.
+- [ ] Add an Enterprise dropdown with Admin portal, Client portal, Services and Gallery links.
+- [ ] Add the logo to the footer, rename Company to Explore and remove footer service lists.

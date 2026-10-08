@@ -17,7 +17,7 @@ export const Route = createFileRoute('/services')({
 });
 
 function ServicesPage() {
-  const [selected, setSelected] = useState(services[0].title);
+  const [selected, setSelected] = useState('Custom Software Development');
   return <><SiteHeader /><main><PageIntro eyebrow="OUR EXPERTISE" title="One partner. Every digital possibility." description="Explore our full range of services, then send your request or ask for a quotation directly." />
     <section className="section container service-directory">{services.map((service, index) => <article id={serviceSlug(service.title)} className="service-directory-item" key={service.title}>
       <div className="service-directory-heading"><span>0{index + 1}</span><service.icon /><div><p>{service.category}</p><h2>{service.title}</h2><p>{service.description}</p></div></div>

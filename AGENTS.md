@@ -15,3 +15,4 @@
 - Use CDN asset pointers for supplied logos and founder photographs, because original uploaded media should not inflate the source repository.
 - Website requests use a shared Zod schema, a public TanStack server function and a narrowly granted database submission function, because visitors need validated submissions without accounts or access to other enquiries.
 - Request rows are private to service-role management; submissions are rate-limited by email and idempotent by request ID, because anonymous visitors must not read customer details or create accidental duplicate requests.
+- Keep enterprise destinations under one shared header menu, because portal, service and gallery access should remain grouped and easy to discover.

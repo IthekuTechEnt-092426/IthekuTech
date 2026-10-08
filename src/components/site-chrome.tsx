@@ -26,6 +26,16 @@ export function SiteHeader() {
             <DropdownMenuSeparator /><DropdownMenuItem asChild><Link to="/services" className="all-services-link">View all services <ArrowUpRight /></Link></DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild><Button variant="ghost" className="nav-dropdown-trigger">Enterprise <ChevronDown /></Button></DropdownMenuTrigger>
+          <DropdownMenuContent align="start" className="enterprise-dropdown">
+            <DropdownMenuLabel>Enterprise</DropdownMenuLabel><DropdownMenuSeparator />
+            <DropdownMenuItem asChild><Link to="/admin-portal">Admin portal</Link></DropdownMenuItem>
+            <DropdownMenuItem asChild><Link to="/client-portal">Client portal</Link></DropdownMenuItem>
+            <DropdownMenuItem asChild><Link to="/services">Services page</Link></DropdownMenuItem>
+            <DropdownMenuItem asChild><Link to="/gallery">Gallery</Link></DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
         {pageLinks.map(item => <Link to={item.to} key={item.label} activeProps={{ className: 'nav-active' }}>{item.label}</Link>)}
       </nav>
       <Button asChild className="header-cta"><Link to="/contact">Let’s talk <ArrowUpRight /></Link></Button>
@@ -34,20 +44,18 @@ export function SiteHeader() {
     {menuOpen && <nav className="mobile-nav" aria-label="Mobile navigation">
       <Link to="/services" onClick={() => setMenuOpen(false)}>All services <ArrowUpRight /></Link>
       <details><summary>Browse services <ChevronDown size={16} /></summary><div className="mobile-service-links">{services.map(service => <Link key={service.title} to="/services" hash={serviceSlug(service.title)} onClick={() => setMenuOpen(false)}>{service.title}</Link>)}</div></details>
+      <details><summary>Enterprise <ChevronDown size={16} /></summary><div className="mobile-service-links"><Link to="/admin-portal" onClick={() => setMenuOpen(false)}>Admin portal</Link><Link to="/client-portal" onClick={() => setMenuOpen(false)}>Client portal</Link><Link to="/services" onClick={() => setMenuOpen(false)}>Services page</Link><Link to="/gallery" onClick={() => setMenuOpen(false)}>Gallery</Link></div></details>
       {[...pageLinks, { label: 'Contact us', to: '/contact' as const }].map(item => <Link key={item.label} to={item.to} onClick={() => setMenuOpen(false)}>{item.label}<ArrowUpRight size={16} /></Link>)}
     </nav>}
   </header>;
 }
 
 export function SiteFooter() {
-  const primaryServices = services.slice(0, 7);
-  const secondaryServices = services.slice(7);
   return <footer className="site-footer">
     <div className="container footer-grid">
-      <div className="footer-intro"><Link className="footer-brand" to="/">iTheku<span>Tech-Enterprise</span></Link><p>Your Enterprise, <strong>Our priority.</strong></p><p className="footer-summary">Purpose-built software, intelligent automation, and dependable digital solutions from Durban.</p></div>
-      <div className="footer-column"><h2>Company</h2><Link to="/about">About us</Link><Link to="/approach">Our approach</Link><Link to="/team">Our team</Link><Link to="/contact">Contact us</Link></div>
-      <div className="footer-column footer-services"><h2>Services</h2>{primaryServices.map(service => <Link key={service.title} to="/services" hash={serviceSlug(service.title)}>{service.title}</Link>)}</div>
-      <div className="footer-column footer-services footer-services-more"><h2>More services</h2>{secondaryServices.map(service => <Link key={service.title} to="/services" hash={serviceSlug(service.title)}>{service.title}</Link>)}</div>
+      <div className="footer-intro"><Link className="footer-logo" to="/" aria-label="iTheku Tech-Enterprise home"><img src={logo.url} alt="iTheku Tech-Enterprise" width={970} height={845} /></Link><p>Your Enterprise, <strong>Our priority.</strong></p><p className="footer-summary">Purpose-built software, intelligent automation, and dependable digital solutions from Durban.</p></div>
+      <div className="footer-column"><h2>Explore</h2><Link to="/about">About us</Link><Link to="/approach">Our approach</Link><Link to="/team">Our team</Link><Link to="/gallery">Gallery</Link><Link to="/contact">Contact us</Link></div>
+      <div className="footer-column"><h2>Enterprise</h2><Link to="/admin-portal">Admin portal</Link><Link to="/client-portal">Client portal</Link><Link to="/services">Services page</Link></div>
       <div className="footer-column footer-contact"><h2>Contact</h2><a href={`mailto:${email}`}><Mail />{email}</a><a href="tel:+27699874907"><Phone />069 987 4907</a><a href="https://www.google.com/maps/search/?api=1&query=300+Apline+Road+Springfield+Durban+4091" target="_blank" rel="noreferrer"><MapPin />Durban, South Africa</a></div>
     </div>
     <div className="container footer-bottom"><span>© {new Date().getFullYear()} iTheku Tech-Enterprise. All rights reserved.</span><span><span className="gold-dot" /> Proudly 100% black-owned.</span><Link to="/">Back home <ArrowUpRight size={14} /></Link></div>
