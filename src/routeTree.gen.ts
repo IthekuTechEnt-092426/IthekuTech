@@ -11,8 +11,11 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AdminPortalRouteImport } from './routes/admin-portal'
 import { Route as ApproachRouteImport } from './routes/approach'
+import { Route as ClientPortalRouteImport } from './routes/client-portal'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as TeamRouteImport } from './routes/team'
 
@@ -26,14 +29,29 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminPortalRoute = AdminPortalRouteImport.update({
+  id: '/admin-portal',
+  path: '/admin-portal',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApproachRoute = ApproachRouteImport.update({
   id: '/approach',
   path: '/approach',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ClientPortalRoute = ClientPortalRouteImport.update({
+  id: '/client-portal',
+  path: '/client-portal',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesRoute = ServicesRouteImport.update({
@@ -50,16 +68,22 @@ const TeamRoute = TeamRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin-portal': typeof AdminPortalRoute
   '/approach': typeof ApproachRoute
+  '/client-portal': typeof ClientPortalRoute
   '/contact': typeof ContactRoute
+  '/gallery': typeof GalleryRoute
   '/services': typeof ServicesRoute
   '/team': typeof TeamRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin-portal': typeof AdminPortalRoute
   '/approach': typeof ApproachRoute
+  '/client-portal': typeof ClientPortalRoute
   '/contact': typeof ContactRoute
+  '/gallery': typeof GalleryRoute
   '/services': typeof ServicesRoute
   '/team': typeof TeamRoute
 }
@@ -67,22 +91,46 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin-portal': typeof AdminPortalRoute
   '/approach': typeof ApproachRoute
+  '/client-portal': typeof ClientPortalRoute
   '/contact': typeof ContactRoute
+  '/gallery': typeof GalleryRoute
   '/services': typeof ServicesRoute
   '/team': typeof TeamRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/approach' | '/contact' | '/services' | '/team'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/admin-portal'
+    | '/approach'
+    | '/client-portal'
+    | '/contact'
+    | '/gallery'
+    | '/services'
+    | '/team'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/approach' | '/contact' | '/services' | '/team'
+  to:
+    | '/'
+    | '/about'
+    | '/admin-portal'
+    | '/approach'
+    | '/client-portal'
+    | '/contact'
+    | '/gallery'
+    | '/services'
+    | '/team'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/admin-portal'
     | '/approach'
+    | '/client-portal'
     | '/contact'
+    | '/gallery'
     | '/services'
     | '/team'
   fileRoutesById: FileRoutesById
@@ -90,8 +138,11 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AdminPortalRoute: typeof AdminPortalRoute
   ApproachRoute: typeof ApproachRoute
+  ClientPortalRoute: typeof ClientPortalRoute
   ContactRoute: typeof ContactRoute
+  GalleryRoute: typeof GalleryRoute
   ServicesRoute: typeof ServicesRoute
   TeamRoute: typeof TeamRoute
 }
@@ -112,6 +163,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin-portal': {
+      id: '/admin-portal'
+      path: '/admin-portal'
+      fullPath: '/admin-portal'
+      preLoaderRoute: typeof AdminPortalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/approach': {
       id: '/approach'
       path: '/approach'
@@ -119,11 +177,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApproachRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/client-portal': {
+      id: '/client-portal'
+      path: '/client-portal'
+      fullPath: '/client-portal'
+      preLoaderRoute: typeof ClientPortalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services': {
@@ -146,8 +218,11 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AdminPortalRoute: AdminPortalRoute,
   ApproachRoute: ApproachRoute,
+  ClientPortalRoute: ClientPortalRoute,
   ContactRoute: ContactRoute,
+  GalleryRoute: GalleryRoute,
   ServicesRoute: ServicesRoute,
   TeamRoute: TeamRoute,
 }
