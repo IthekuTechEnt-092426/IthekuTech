@@ -38,7 +38,7 @@ function Index() {
           <h1>iTheku<br /><span>Tech-Enterprise</span></h1>
           <p className="hero-motto">Your Enterprise, <span>Our priority.</span></p>
           <p className="hero-description">From custom software to intelligent AI solutions,<br className="desktop-break" /> we build the technology that moves your business forward.</p>
-          <div className="hero-actions"><Button asChild size="lg"><Link to="/contact">Let’s build your solution <ArrowUpRight /></Link></Button><a className="hero-services" href="#services">Explore our services <ArrowRight size={17} /></a></div>
+          <div className="hero-actions"><Button asChild size="lg"><Link to="/client-portal">Let’s build your solution <ArrowUpRight /></Link></Button><a className="hero-services" href="#services">Explore our services <ArrowRight size={17} /></a></div>
           <div className="hero-location"><MapPin size={14} /> Rooted in Durban. Built for your business.</div>
         </div>
         <a className="hero-scroll" href="#services" aria-label="Scroll to services"><ChevronDown size={20} /></a>

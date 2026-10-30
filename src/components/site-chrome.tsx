@@ -4,7 +4,7 @@ import { ArrowUpRight, ChevronDown, Mail, MapPin, Menu, Phone, X } from 'lucide-
 import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { email, services, serviceSlug } from '@/lib/company';
-import logo from '@/assets/logo.asset.json';
+const siteLogo = '/WhatsApp Image 2026-10-30 at 13.48.38 (1).jpeg';
 
 const pageLinks = [
   { label: 'About us', to: '/about' as const },
@@ -16,7 +16,7 @@ export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
   return <header className="site-header">
     <div className="container header-inner">
-      <Link to="/" className="logo-link" aria-label="iTheku Tech-Enterprise home"><img src={logo.url} alt="iTheku Tech-Enterprise — Your Enterprise, Our priority." width={970} height={845} /></Link>
+      <Link to="/" className="logo-link" aria-label="iTheku Tech-Enterprise home"><img src={siteLogo} alt="iTheku Tech-Enterprise — Your Enterprise, Our priority." width={1600} height={600} /></Link>
       <nav aria-label="Main navigation" className="desktop-nav">
         <DropdownMenu>
           <DropdownMenuTrigger asChild><Button variant="ghost" className="nav-dropdown-trigger">Services <ChevronDown /></Button></DropdownMenuTrigger>
@@ -38,7 +38,7 @@ export function SiteHeader() {
         </DropdownMenu>
         {pageLinks.map(item => <Link to={item.to} key={item.label} activeProps={{ className: 'nav-active' }}>{item.label}</Link>)}
       </nav>
-      <Button asChild className="header-cta"><Link to="/contact">Let’s talk <ArrowUpRight /></Link></Button>
+      <Button asChild className="header-cta"><Link to="/client-portal">Let’s talk <ArrowUpRight /></Link></Button>
       <Button variant="ghost" size="icon" className="mobile-menu-button" aria-label={menuOpen ? 'Close navigation' : 'Open navigation'} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</Button>
     </div>
     {menuOpen && <nav className="mobile-nav" aria-label="Mobile navigation">
@@ -53,7 +53,7 @@ export function SiteHeader() {
 export function SiteFooter() {
   return <footer className="site-footer">
     <div className="container footer-grid">
-      <div className="footer-intro"><Link className="footer-logo" to="/" aria-label="iTheku Tech-Enterprise home"><img src={logo.url} alt="iTheku Tech-Enterprise" width={970} height={845} /></Link><p>Your Enterprise, <strong>Our priority.</strong></p><p className="footer-summary">Purpose-built software, intelligent automation, and dependable digital solutions from Durban.</p></div>
+      <div className="footer-intro"><Link className="footer-logo" to="/" aria-label="iTheku Tech-Enterprise home"><img src={siteLogo} alt="iTheku Tech-Enterprise" width={1600} height={600} /></Link><p>Your Enterprise, <strong>Our priority.</strong></p><p className="footer-summary">Purpose-built software, intelligent automation, and dependable digital solutions from Durban.</p></div>
       <div className="footer-column"><h2>Explore</h2><Link to="/about">About us</Link><Link to="/approach">Our approach</Link><Link to="/team">Our team</Link><Link to="/gallery">Gallery</Link><Link to="/contact">Contact us</Link></div>
       <div className="footer-column"><h2>Enterprise</h2><Link to="/admin-portal">Admin portal</Link><Link to="/client-portal">Client portal</Link><Link to="/services">Services page</Link></div>
       <div className="footer-column footer-contact"><h2>Contact</h2><a href={`mailto:${email}`}><Mail />{email}</a><a href="tel:+27699874907"><Phone />069 987 4907</a><a href="https://www.google.com/maps/search/?api=1&query=300+Apline+Road+Springfield+Durban+4091" target="_blank" rel="noreferrer"><MapPin />Durban, South Africa</a></div>
