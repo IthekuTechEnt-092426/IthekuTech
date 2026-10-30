@@ -14,6 +14,123 @@ export type Database = {
   }
   public: {
     Tables: {
+      client_profiles: {
+        Row: {
+          company: string
+          created_at: string
+          email: string
+          full_name: string
+          user_id: string
+        }
+        Insert: {
+          company?: string
+          created_at?: string
+          email: string
+          full_name?: string
+          user_id: string
+        }
+        Update: {
+          company?: string
+          created_at?: string
+          email?: string
+          full_name?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      projects: {
+        Row: {
+          client_id: string
+          created_at: string
+          id: string
+          name: string
+          progress: number
+          service: string
+          start_date: string | null
+          status: string
+          summary: string
+          target_date: string | null
+          updated_at: string
+        }
+        Insert: {
+          client_id: string
+          created_at?: string
+          id?: string
+          name: string
+          progress?: number
+          service: string
+          start_date?: string | null
+          status?: string
+          summary?: string
+          target_date?: string | null
+          updated_at?: string
+        }
+        Update: {
+          client_id?: string
+          created_at?: string
+          id?: string
+          name?: string
+          progress?: number
+          service?: string
+          start_date?: string | null
+          status?: string
+          summary?: string
+          target_date?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      project_messages: {
+        Row: {
+          author_id: string
+          body: string
+          created_at: string
+          id: string
+          project_id: string
+        }
+        Insert: {
+          author_id: string
+          body: string
+          created_at?: string
+          id?: string
+          project_id: string
+        }
+        Update: {
+          author_id?: string
+          body?: string
+          created_at?: string
+          id?: string
+          project_id?: string
+        }
+        Relationships: []
+      }
+      project_updates: {
+        Row: {
+          author_id: string
+          body: string
+          created_at: string
+          id: string
+          project_id: string
+          title: string
+        }
+        Insert: {
+          author_id: string
+          body: string
+          created_at?: string
+          id?: string
+          project_id: string
+          title: string
+        }
+        Update: {
+          author_id?: string
+          body?: string
+          created_at?: string
+          id?: string
+          project_id?: string
+          title?: string
+        }
+        Relationships: []
+      }
       website_requests: {
         Row: {
           company: string
